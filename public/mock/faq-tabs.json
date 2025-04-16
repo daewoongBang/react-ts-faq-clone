@@ -1,0 +1,12 @@
+{
+  "tabs": [
+    {
+      "title": "서비스 도입",
+      "value": "CONSULT"
+    },
+    {
+      "title": "서비스 이용",
+      "value": "USAGE"
+    }
+  ]
+}
