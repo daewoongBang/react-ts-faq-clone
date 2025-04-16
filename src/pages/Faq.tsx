@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Tab from '@/components/common/Tab';
+import Search from '@/components/common/Search';
 import { getFaqTabs } from '@/apis/faq';
 
 const Faq = () => {
@@ -29,6 +30,8 @@ const Faq = () => {
         selectedTab={selectedTab}
         onSelectTab={setSelectedTab}
       />
+
+      <Search />
     </div>
   );
 };

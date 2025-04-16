@@ -11,7 +11,7 @@ interface TabProps {
 
 const Tab = ({ tabs, selectedTab, onSelectTab }: TabProps) => {
   return (
-    <ul className='flex border border-gray-300 w-full'>
+    <ul className='flex border border-gray-300 w-full mb-8'>
       {tabs.map((tab) => (
         <li
           className={`flex-1 px-4 py-3 text-center text-xl cursor-pointer ${
