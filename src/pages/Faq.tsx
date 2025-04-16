@@ -11,6 +11,7 @@ const Faq = () => {
   });
 
   const [selectedTab, setSelectedTab] = useState<string>('');
+  const [selectedSubTab, setSelectedSubTab] = useState<string>('all');
 
   useEffect(() => {
     if (data && data.length > 0) {
@@ -32,6 +33,18 @@ const Faq = () => {
       />
 
       <Search />
+
+      <Tab
+        tabs={[
+          { title: '전체', value: 'ALL' },
+          { title: '서비스 상품', value: 'PRODUCT' },
+          { title: '도입 상담', value: 'COUNSELING' },
+          { title: '계약', value: 'CONTRACT' },
+        ]}
+        selectedTab={selectedSubTab}
+        onSelectTab={setSelectedSubTab}
+        styleType='rounded'
+      />
     </div>
   );
 };

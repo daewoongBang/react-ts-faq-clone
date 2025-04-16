@@ -8,7 +8,7 @@ const Search = ({
   placeholder = '찾으시는 내용을 입력해주세요',
 }: SearchProps) => {
   return (
-    <div className='relative bg-gray-100 p-4'>
+    <div className='relative bg-gray-100 p-4 mb-8'>
       <input
         type='text'
         placeholder={placeholder}
