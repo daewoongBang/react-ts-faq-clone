@@ -5,6 +5,7 @@ import Search from '@/components/common/Search';
 import Accordion from '@/components/common/Accordion';
 import InquirySection from '@/components/faq/InquirySection';
 import ProcessStepSection from '@/components/faq/ProcessStepSection';
+import AppDownloadBanner from '@/components/section/AppDownloadBanner';
 import { getFaqTabs } from '@/apis/faq';
 
 const Faq = () => {
@@ -67,6 +68,8 @@ const Faq = () => {
       <InquirySection />
 
       <ProcessStepSection />
+
+      <AppDownloadBanner />
     </div>
   );
 };
