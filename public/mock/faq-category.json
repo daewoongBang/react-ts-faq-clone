@@ -1,0 +1,46 @@
+{
+  "CONSULT": [
+    {
+      "value": "PRODUCT",
+      "title": "서비스 상품"
+    },
+    {
+      "value": "COUNSELING",
+      "title": "도입 상담"
+    },
+    {
+      "value": "CONTRACT",
+      "title": "계약"
+    }
+  ],
+  "USAGE": [
+    {
+      "value": "SIGN_UP",
+      "title": "가입문의"
+    },
+    {
+      "value": "BUSINESS",
+      "title": "비즈니스(업무용)"
+    },
+    {
+      "value": "ACCIDENT",
+      "title": "사고/보험"
+    },
+    {
+      "value": "RESERVATION",
+      "title": "예약/결제"
+    },
+    {
+      "value": "VEHICLE",
+      "title": "차량문의"
+    },
+    {
+      "value": "REFUEL",
+      "title": "충전"
+    },
+    {
+      "value": "COUPON",
+      "title": "쿠폰/기타"
+    }
+  ]
+}

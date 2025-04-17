@@ -38,7 +38,7 @@ const RoundedTab = ({ tabs, selectedTab, onSelectTab }: TabBaseProps) => {
     <ul className='flex gap-2 mb-8'>
       {tabs.map((tab) => (
         <li
-          className={`px-5 py-2 text-center text-xl cursor-pointer rounded-full font-semibold ${
+          className={`px-5 py-2 text-center text-xl cursor-pointer rounded-full font-semibold whitespace-nowrap ${
             selectedTab === tab.value ? 'bg-primary text-white' : ''
           }`}
           key={`tab-${tab.value}`}

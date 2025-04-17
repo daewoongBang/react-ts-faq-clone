@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Tab from '@/components/common/Tab';
 import Search from '@/components/common/Search';
@@ -6,22 +6,43 @@ import Accordion from '@/components/common/Accordion';
 import InquirySection from '@/components/faq/InquirySection';
 import ProcessStepSection from '@/components/faq/ProcessStepSection';
 import AppDownloadBanner from '@/components/section/AppDownloadBanner';
-import { getFaqTabs } from '@/apis/faq';
+import { getFaqMainTabs, getFaqCategory } from '@/apis/faq';
+
+interface FaqCategory {
+  value: string;
+  title: string;
+}
 
 const Faq = () => {
-  const { isLoading, data } = useQuery({
-    queryKey: ['faq-tabs'],
-    queryFn: getFaqTabs,
+  const { data: mainTabs, isSuccess: isSuccessMainTabs } = useQuery({
+    queryKey: ['faq-main-tabs'],
+    queryFn: getFaqMainTabs,
   });
 
-  const [selectedTab, setSelectedTab] = useState<string>('');
+  const [selectedTab, setSelectedTab] = useState<string>(
+    mainTabs?.[0]?.value || ''
+  );
+
+  const [faqCategory, setFaqCategory] = useState<FaqCategory[]>([]);
   const [selectedSubTab, setSelectedSubTab] = useState<string>('ALL');
 
+  const { data: category } = useQuery({
+    queryKey: ['faq-category', selectedTab],
+    queryFn: () => getFaqCategory(selectedTab),
+    enabled: !!selectedTab,
+  });
+
   useEffect(() => {
-    if (data && data.length > 0) {
-      setSelectedTab(data[0].value);
+    if ((category || []).length > 0) {
+      setFaqCategory([{ title: '전체', value: 'ALL' }, ...category]);
     }
-  }, [data]);
+  }, [category]);
+
+  useEffect(() => {
+    if (isSuccessMainTabs && mainTabs && !selectedTab) {
+      setSelectedTab(mainTabs[0].value);
+    }
+  }, [isSuccessMainTabs, mainTabs, selectedTab]);
 
   return (
     <div>
@@ -31,7 +52,7 @@ const Faq = () => {
       </div>
 
       <Tab
-        tabs={isLoading ? [] : data}
+        tabs={mainTabs || []}
         selectedTab={selectedTab}
         onSelectTab={setSelectedTab}
       />
@@ -39,12 +60,7 @@ const Faq = () => {
       <Search />
 
       <Tab
-        tabs={[
-          { title: '전체', value: 'ALL' },
-          { title: '서비스 상품', value: 'PRODUCT' },
-          { title: '도입 상담', value: 'COUNSELING' },
-          { title: '계약', value: 'CONTRACT' },
-        ]}
+        tabs={faqCategory || []}
         selectedTab={selectedSubTab}
         onSelectTab={setSelectedSubTab}
         styleType='rounded'

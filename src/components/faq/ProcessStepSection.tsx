@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import {
   IconProcessStep1,
   IconProcessStep2,
@@ -38,12 +39,12 @@ const ProcessStepSection = () => {
 
       <ol className='flex flex-col gap-4 lg:items-center sm:flex-col lg:flex-row'>
         {processSteps.map((step, index) => (
-          <>
-            <ProcessStep key={`${index}-${step.title}`} {...step} />
+          <Fragment key={`process-step-${index}-${step.title}`}>
+            <ProcessStep {...step} />
             {index !== processSteps.length - 1 && (
               <IconStepArrow className='hidden lg:block' />
             )}
-          </>
+          </Fragment>
         ))}
       </ol>
     </section>
