@@ -3,6 +3,7 @@ import { IconArrowDown } from '@/assets/common';
 
 interface AccordionItem {
   title: string;
+  subTitle: string;
   content: string;
 }
 
@@ -17,6 +18,7 @@ interface AccordionProps {
 
 const AccordionItem = ({
   title,
+  subTitle,
   content,
   isOpen,
   onClick,
@@ -28,7 +30,11 @@ const AccordionItem = ({
           isOpen ? 'bg-gray-100' : ''
         }`}
       >
-        <h3 className='text-lg font-bold'>{title}</h3>
+        <div className='flex flex-col gap-4 sm:flex-col lg:flex-row text-center'>
+          <span className='w-24 text-lg text-gray-500'>{subTitle}</span>
+          <h3 className='text-lg font-bold'>{title}</h3>
+        </div>
+
         <button>
           <IconArrowDown
             className={`transition-transform duration-300 ${
@@ -39,8 +45,11 @@ const AccordionItem = ({
       </div>
 
       <div className={`pb-4 ${isOpen ? 'block bg-gray-100' : 'hidden'}`}>
-        <div className='border-t border-b border-gray-300 bg-white p-4'>
-          <p className='text-lg'>{content}</p>
+        <div className='border-t border-b border-gray-300 bg-white p-8'>
+          <p
+            className='text-lg'
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
         </div>
       </div>
     </li>
@@ -56,7 +65,7 @@ const Accordion = ({ items }: AccordionProps) => {
 
   return (
     <ul className='border-t-2 border-gray-900 mb-8'>
-      {items.map((item, index) => (
+      {(items || []).map((item, index) => (
         <AccordionItem
           key={`accordion-item-${item.title}`}
           {...item}

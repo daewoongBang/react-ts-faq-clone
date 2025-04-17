@@ -5,3 +5,6 @@ export const getFaqMainTabs = async () =>
 
 export const getFaqCategory = async (type: string) =>
   await axios.get('/mock/faq-category.json').then((res) => res.data[type]);
+
+export const getFaqItems = async (type: string) =>
+  await axios.get('/mock/faq-items.json').then((res) => res.data[type]);

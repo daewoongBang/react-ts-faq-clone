@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Tab from '@/components/common/Tab';
 import Search from '@/components/common/Search';
-import Accordion from '@/components/common/Accordion';
+import FaqList from '@/components/faq/FaqList';
 import InquirySection from '@/components/faq/InquirySection';
 import ProcessStepSection from '@/components/faq/ProcessStepSection';
 import AppDownloadBanner from '@/components/section/AppDownloadBanner';
@@ -66,20 +66,7 @@ const Faq = () => {
         styleType='rounded'
       />
 
-      <Accordion
-        items={[
-          { title: '전체', content: '전체 질문에 대한 답변입니다.' },
-          {
-            title: '서비스 상품',
-            content: '서비스 상품에 대한 질문에 대한 답변입니다.',
-          },
-          {
-            title: '도입 상담',
-            content: '도입 상담에 대한 질문에 대한 답변입니다.',
-          },
-          { title: '계약', content: '계약에 대한 질문에 대한 답변입니다.' },
-        ]}
-      />
+      <FaqList type={selectedTab} />
 
       <InquirySection />
 
