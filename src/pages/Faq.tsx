@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import Tab from '@/components/common/Tab';
 import Search from '@/components/common/Search';
 import Accordion from '@/components/common/Accordion';
+import InquirySection from '@/components/faq/InquirySection';
 import { getFaqTabs } from '@/apis/faq';
 
 const Faq = () => {
@@ -61,6 +62,8 @@ const Faq = () => {
           { title: '계약', content: '계약에 대한 질문에 대한 답변입니다.' },
         ]}
       />
+
+      <InquirySection />
     </div>
   );
 };

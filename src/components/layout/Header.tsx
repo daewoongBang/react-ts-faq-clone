@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className='flex items-center justify-between px-16 py-4'>
+    <header className='flex items-center justify-between px-4 py-2 sm:px-8 lg:px-16'>
       <Link to='/'>
         <Logo />
       </Link>
