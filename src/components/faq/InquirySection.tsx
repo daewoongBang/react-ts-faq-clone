@@ -19,8 +19,8 @@ const inquiryItems = [
 
 const InquirySection = () => {
   return (
-    <section>
-      <h2 className='text-2xl font-bold mb-4'>서비스 문의</h2>
+    <section className='mb-8'>
+      <h2 className='text-2xl font-bold mb-8'>서비스 문의</h2>
 
       <div className='flex flex-wrap gap-4'>
         {inquiryItems.map((item, index) => {
@@ -29,7 +29,7 @@ const InquirySection = () => {
 
           return (
             <ActionCard
-              key={item.title}
+              key={`${index}-${item.title}`}
               {...item}
               className={`${
                 isSmLast ? 'sm:w-full ' : 'sm:w-[calc(50%-8px)] '

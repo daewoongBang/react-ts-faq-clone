@@ -4,6 +4,7 @@ import Tab from '@/components/common/Tab';
 import Search from '@/components/common/Search';
 import Accordion from '@/components/common/Accordion';
 import InquirySection from '@/components/faq/InquirySection';
+import ProcessStepSection from '@/components/faq/ProcessStepSection';
 import { getFaqTabs } from '@/apis/faq';
 
 const Faq = () => {
@@ -64,6 +65,8 @@ const Faq = () => {
       />
 
       <InquirySection />
+
+      <ProcessStepSection />
     </div>
   );
 };
