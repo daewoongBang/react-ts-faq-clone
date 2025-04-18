@@ -2003,6 +2003,11 @@ react-dom@^19.0.0:
   dependencies:
     scheduler "^0.26.0"
 
+react-icons@5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.3.0.tgz#ccad07a30aebd40a89f8cfa7d82e466019203f1c"
+  integrity sha512-DnUk8aFbTyQPSkCfF8dbX6kQjXA9DktMeJqfjrg6cK9vwQVMxmcA3BfP4QoiztVmEHtwlTgLFsPuH2NskKT6eg==
+
 react-refresh@^0.17.0:
   version "0.17.0"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.17.0.tgz#b7e579c3657f23d04eccbe4ad2e58a8ed51e7e53"

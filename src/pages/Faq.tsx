@@ -55,8 +55,12 @@ const Faq = () => {
   return (
     <div>
       <div className='flex flex-col gap-2 mb-8'>
-        <h1 className='text-4xl font-bold'>자주 묻는 질문</h1>
-        <span className='text-md'>궁금하신 내용을 빠르게 찾아보세요</span>
+        <h1 className='text-2xl sm:text-3xl md:text-4xl font-bold'>
+          자주 묻는 질문
+        </h1>
+        <span className='text-sm sm:text-base md:text-lg'>
+          궁금하신 내용을 빠르게 찾아보세요
+        </span>
       </div>
 
       <Tab
