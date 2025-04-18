@@ -19,6 +19,9 @@ const Faq = () => {
     queryFn: getFaqMainTabs,
   });
 
+  const [inputValue, setInputValue] = useState<string>('');
+  const [searchKeyword, setSearchKeyword] = useState<string>('');
+
   const [selectedTab, setSelectedTab] = useState<string>(
     mainTabs?.[0]?.value || ''
   );
@@ -31,6 +34,11 @@ const Faq = () => {
     queryFn: () => getFaqCategory(selectedTab),
     enabled: !!selectedTab,
   });
+
+  useEffect(() => {
+    setInputValue('');
+    setSearchKeyword('');
+  }, [selectedTab]);
 
   useEffect(() => {
     if ((category || []).length > 0) {
@@ -57,7 +65,11 @@ const Faq = () => {
         onSelectTab={setSelectedTab}
       />
 
-      <Search />
+      <Search
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        setSearchKeyword={setSearchKeyword}
+      />
 
       <Tab
         tabs={faqCategory || []}
@@ -66,7 +78,11 @@ const Faq = () => {
         styleType='rounded'
       />
 
-      <FaqList type={selectedTab} subType={selectedSubTab} />
+      <FaqList
+        type={selectedTab}
+        subType={selectedSubTab}
+        search={searchKeyword}
+      />
 
       <InquirySection />
 

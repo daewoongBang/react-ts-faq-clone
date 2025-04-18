@@ -1,10 +1,12 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { getFaqItems } from '@/apis/faq';
 import Accordion from '@/components/common/Accordion';
+import { getFaqItems } from '@/apis/faq';
+import { IconNoData } from '@/assets/common';
 
 interface FaqListProps {
   type: string;
   subType?: string;
+  search?: string;
 }
 
 interface FaqItem {
@@ -22,12 +24,12 @@ interface FaqResponse {
   };
 }
 
-const FaqList = ({ type, subType }: FaqListProps) => {
+const FaqList = ({ type, subType, search }: FaqListProps) => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery<FaqResponse>({
-      queryKey: ['faq-items', type, subType],
+      queryKey: ['faq-items', type, subType, search],
       queryFn: ({ pageParam }) =>
-        getFaqItems({ type, page: pageParam as number, subType }),
+        getFaqItems({ type, page: pageParam as number, subType, search }),
       getNextPageParam: (lastPage, allPages) => {
         return lastPage.pageInfo.hasNext ? allPages.length : undefined;
       },
@@ -43,21 +45,28 @@ const FaqList = ({ type, subType }: FaqListProps) => {
     }
   };
 
-  if (!faqItems.length) {
-    return <div>데이터가 없습니다.</div>;
-  }
-
   return (
-    <div>
-      <Accordion items={faqItems} />
-      {hasNextPage && (
-        <button
-          onClick={handleLoadMore}
-          disabled={isFetchingNextPage}
-          className='mt-4 w-full text-center text-lg'
-        >
-          &#43; 더보기
-        </button>
+    <div className='border-t-2 border-gray-900 mb-8'>
+      {faqItems.length > 0 ? (
+        <>
+          <Accordion items={faqItems} />
+          {hasNextPage && (
+            <button
+              onClick={handleLoadMore}
+              disabled={isFetchingNextPage}
+              className='mt-4 w-full text-center text-lg'
+            >
+              &#43; 더보기
+            </button>
+          )}
+        </>
+      ) : (
+        <div className='flex flex-col items-center justify-center h-full gap-4 py-48 border-b border-gary-300'>
+          <IconNoData />
+          <p className='font-semibold text-xl text-gray-500'>
+            검색결과가 없습니다.
+          </p>
+        </div>
       )}
     </div>
   );

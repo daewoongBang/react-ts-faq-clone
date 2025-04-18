@@ -71,7 +71,7 @@ const Accordion = ({ items }: AccordionProps) => {
   };
 
   return (
-    <ul className='border-t-2 border-gray-900 mb-8'>
+    <ul>
       {(items || []).map((item, index) => (
         <AccordionItem
           key={`accordion-item-${item.id}-${index}`}

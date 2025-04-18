@@ -4,6 +4,7 @@ interface GetFaqItemsProps {
   type: string;
   page: number;
   subType?: string;
+  search?: string;
 }
 
 interface FaqItem {
@@ -25,13 +26,21 @@ export const getFaqItems = async ({
   type,
   page,
   subType = '',
+  search = '',
 }: GetFaqItemsProps) =>
   await axios.get('/mock/faq-items.json').then((res) => {
     const data = res.data[type];
 
-    const items = subType
+    let items = subType
       ? data.items.filter((item: FaqItem) => item.categoryValue === subType)
       : data.items;
+
+    if (search) {
+      items = items.filter(
+        (item: FaqItem) =>
+          item.answer.includes(search) || item.question.includes(search)
+      );
+    }
 
     const startIndex = page * data.pageInfo.limit;
     const endIndex = startIndex + data.pageInfo.limit;
