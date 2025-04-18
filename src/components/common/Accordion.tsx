@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { IconArrowDown } from '@/assets/common';
 
 interface AccordionItem {
-  title: string;
-  subTitle: string;
-  content: string;
+  id: number;
+  question: string;
+  answer: string;
+  categoryName: string;
+  subCategoryName: string;
 }
 
 interface AccordionItemProps extends AccordionItem {
@@ -17,9 +19,10 @@ interface AccordionProps {
 }
 
 const AccordionItem = ({
-  title,
-  subTitle,
-  content,
+  question,
+  answer,
+  categoryName,
+  subCategoryName,
   isOpen,
   onClick,
 }: AccordionItemProps) => {
@@ -31,8 +34,15 @@ const AccordionItem = ({
         }`}
       >
         <div className='flex flex-col gap-4 sm:flex-col lg:flex-row text-center'>
-          <span className='w-24 text-lg text-gray-500'>{subTitle}</span>
-          <h3 className='text-lg font-bold'>{title}</h3>
+          {categoryName && (
+            <span className='w-24 text-lg text-gray-500'>{categoryName}</span>
+          )}
+          {subCategoryName && (
+            <span className='w-24 text-lg text-gray-500'>
+              {subCategoryName}
+            </span>
+          )}
+          <h3 className='text-lg font-bold'>{question}</h3>
         </div>
 
         <button>
@@ -46,10 +56,7 @@ const AccordionItem = ({
 
       <div className={`pb-4 ${isOpen ? 'block bg-gray-100' : 'hidden'}`}>
         <div className='border-t border-b border-gray-300 bg-white p-8'>
-          <p
-            className='text-lg'
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
+          <p className='text-lg' dangerouslySetInnerHTML={{ __html: answer }} />
         </div>
       </div>
     </li>
@@ -67,7 +74,7 @@ const Accordion = ({ items }: AccordionProps) => {
     <ul className='border-t-2 border-gray-900 mb-8'>
       {(items || []).map((item, index) => (
         <AccordionItem
-          key={`accordion-item-${item.title}`}
+          key={`accordion-item-${item.id}-${index}`}
           {...item}
           isOpen={selectedIndex === index}
           onClick={() => handleClick(index)}

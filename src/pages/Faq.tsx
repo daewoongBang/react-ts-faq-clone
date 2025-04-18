@@ -24,7 +24,7 @@ const Faq = () => {
   );
 
   const [faqCategory, setFaqCategory] = useState<FaqCategory[]>([]);
-  const [selectedSubTab, setSelectedSubTab] = useState<string>('ALL');
+  const [selectedSubTab, setSelectedSubTab] = useState<string>('');
 
   const { data: category } = useQuery({
     queryKey: ['faq-category', selectedTab],
@@ -34,7 +34,7 @@ const Faq = () => {
 
   useEffect(() => {
     if ((category || []).length > 0) {
-      setFaqCategory([{ title: '전체', value: 'ALL' }, ...category]);
+      setFaqCategory([{ title: '전체', value: '' }, ...category]);
     }
   }, [category]);
 
@@ -66,7 +66,7 @@ const Faq = () => {
         styleType='rounded'
       />
 
-      <FaqList type={selectedTab} />
+      <FaqList type={selectedTab} subType={selectedSubTab} />
 
       <InquirySection />
 
