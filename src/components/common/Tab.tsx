@@ -20,7 +20,7 @@ const FullTab = ({ tabs, selectedTab, onSelectTab }: TabBaseProps) => {
     <ul className='flex border border-gray-300 w-full mb-8'>
       {tabs.map((tab) => (
         <li
-          className={`px-4 py-3 text-center text-xl cursor-pointer flex-1 ${
+          className={`px-4 py-3 text-center text-sm sm:text-lg md:text-xl cursor-pointer flex-1 ${
             selectedTab === tab.value ? 'bg-primary text-white font-bold' : ''
           }`}
           key={`tab-${tab.value}`}
@@ -35,10 +35,10 @@ const FullTab = ({ tabs, selectedTab, onSelectTab }: TabBaseProps) => {
 
 const RoundedTab = ({ tabs, selectedTab, onSelectTab }: TabBaseProps) => {
   return (
-    <ul className='flex gap-2 mb-8'>
+    <ul className='flex flex-wrap mb-8'>
       {tabs.map((tab) => (
         <li
-          className={`px-5 py-2 text-center text-xl cursor-pointer rounded-full font-semibold whitespace-nowrap ${
+          className={`px-3 py-2 sm:px-5 text-center text-sm sm:text-lg md:text-xl cursor-pointer rounded-full font-semibold whitespace-nowrap ${
             selectedTab === tab.value ? 'bg-primary text-white' : ''
           }`}
           key={`tab-${tab.value}`}

@@ -28,7 +28,7 @@ const Search = ({
         <input
           type='text'
           placeholder={placeholder}
-          className='w-full p-4 border border-gray-900 outline-none placeholder:text-lg'
+          className='w-full p-2 sm:p-4 border border-gray-900 outline-none placeholder:text-sm sm:placeholder:text-lg'
           value={inputValue}
           onChange={handleInputChange}
         />

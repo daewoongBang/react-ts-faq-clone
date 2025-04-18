@@ -54,8 +54,8 @@ const Faq = () => {
 
   return (
     <div>
-      <div className='flex flex-col gap-2 mb-8'>
-        <h1 className='text-2xl sm:text-3xl md:text-4xl font-bold'>
+      <div className='flex flex-col gap-2  sm:mt-8 mb-8'>
+        <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold'>
           자주 묻는 질문
         </h1>
         <span className='text-sm sm:text-base md:text-lg'>
