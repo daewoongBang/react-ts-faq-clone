@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import Tab from '@/components/common/Tab';
 import Search from '@/components/common/Search';
 import FaqList from '@/components/faq/FaqList';
-import InquirySection from '@/components/faq/InquirySection';
+import InquirySection from '@/components/section/Inquery';
 import ProcessStepSection from '@/components/faq/ProcessStepSection';
 import AppDownloadBanner from '@/components/section/AppDownloadBanner';
 import { getFaqMainTabs, getFaqCategory } from '@/apis/faq';

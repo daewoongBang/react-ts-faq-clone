@@ -1,5 +1,5 @@
 import { IconDownload } from '@/assets/common';
-import ActionCard from '../common/ActionCard';
+import InqueryCard from './Card';
 
 const inquiryItems = [
   {
@@ -28,7 +28,7 @@ const InquirySection = () => {
             inquiryItems.length % 2 === 1 && index === inquiryItems.length - 1;
 
           return (
-            <ActionCard
+            <InqueryCard
               key={`${index}-${item.title}`}
               {...item}
               className={`${

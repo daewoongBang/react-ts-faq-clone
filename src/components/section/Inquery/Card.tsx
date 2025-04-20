@@ -1,20 +1,20 @@
-interface ActionCardProps {
+interface InqueryCardProps {
   icon: React.ReactNode;
   title: string;
   description?: string;
   className?: string;
 }
 
-const ActionCard = ({
+const InqueryCard = ({
   icon,
   title,
   description,
   className = '',
-}: ActionCardProps) => {
+}: InqueryCardProps) => {
   return (
     <div
-      className={`inline-flex items-center justify-center w-full gap-4 border border-gray-900 p-4 cursor-pointer 
-        ${className}`}
+      className={`inline-flex items-center sm:items-center justify-start sm:justify-center w-full gap-4 border border-gray-900 p-4 cursor-pointer 
+          ${className}`}
     >
       <div className='shrink-0'>{icon}</div>
 
@@ -28,4 +28,4 @@ const ActionCard = ({
   );
 };
 
-export default ActionCard;
+export default InqueryCard;
