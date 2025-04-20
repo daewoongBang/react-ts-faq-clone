@@ -6,7 +6,7 @@ import {
   IconProcessStep4,
   IconStepArrow,
 } from '@/assets/faq';
-import ProcessStep from './ProcessStep';
+import ProcessStepItem from './Item';
 
 const processSteps = [
   {
@@ -40,7 +40,7 @@ const ProcessStepSection = () => {
       <ol className='flex flex-col gap-4 lg:items-center sm:flex-col lg:flex-row'>
         {processSteps.map((step, index) => (
           <Fragment key={`process-step-${index}-${step.title}`}>
-            <ProcessStep {...step} />
+            <ProcessStepItem {...step} />
             {index !== processSteps.length - 1 && (
               <IconStepArrow className='hidden lg:block' />
             )}

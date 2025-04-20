@@ -1,10 +1,14 @@
-interface ProcessStepProps {
+interface ProcessStepItemProps {
   icon: React.ReactNode;
   title: string;
   description: string;
 }
 
-const ProcessStep = ({ icon, title, description }: ProcessStepProps) => {
+const ProcessStepItem = ({
+  icon,
+  title,
+  description,
+}: ProcessStepItemProps) => {
   return (
     <li className='flex gap-4 sm:flex-row lg:flex-col'>
       <div>{icon}</div>
@@ -17,4 +21,4 @@ const ProcessStep = ({ icon, title, description }: ProcessStepProps) => {
   );
 };
 
-export default ProcessStep;
+export default ProcessStepItem;

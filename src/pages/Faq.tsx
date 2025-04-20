@@ -4,7 +4,7 @@ import Tab from '@/components/common/Tab';
 import Search from '@/components/common/Search';
 import FaqList from '@/components/faq/FaqList';
 import InquirySection from '@/components/section/Inquery';
-import ProcessStepSection from '@/components/faq/ProcessStepSection';
+import ProcessStepSection from '@/components/section/ProcessStep';
 import AppDownloadBanner from '@/components/section/AppDownloadBanner';
 import { getFaqMainTabs, getFaqCategory } from '@/apis/faq';
 
