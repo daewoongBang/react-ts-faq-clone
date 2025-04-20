@@ -33,16 +33,36 @@ const AccordionItem = ({
           isOpen ? 'bg-gray-100' : ''
         }`}
       >
-        <div className='flex flex-col gap-4 sm:flex-col lg:flex-row text-center'>
-          {categoryName && (
-            <span className='w-24 text-lg text-gray-500'>{categoryName}</span>
-          )}
-          {subCategoryName && (
-            <span className='w-24 text-lg text-gray-500'>
-              {subCategoryName}
-            </span>
-          )}
-          <h3 className='text-lg font-bold'>{question}</h3>
+        <div className='flex flex-col gap-4 md:flex-col lg:flex-row text-left lg:text-center'>
+          <div className='flex flex-col md:flex-row items-start md:items-center gap-2'>
+            {categoryName && subCategoryName ? (
+              <>
+                <span className='hidden lg:block w-24 text-sm md:text-lg text-gray-500'>
+                  {categoryName}
+                </span>
+                <span className='hidden lg:block w-24 text-sm md:text-lg text-gray-500'>
+                  {subCategoryName}
+                </span>
+                <span className='lg:hidden text-sm md:text-lg text-gray-500'>
+                  {categoryName} &gt; {subCategoryName}
+                </span>
+              </>
+            ) : (
+              <>
+                {categoryName && (
+                  <span className='w-24 text-sm md:text-lg text-gray-500'>
+                    {categoryName}
+                  </span>
+                )}
+                {subCategoryName && (
+                  <span className='w-24 text-sm md:text-lg text-gray-500'>
+                    {subCategoryName}
+                  </span>
+                )}
+              </>
+            )}
+          </div>
+          <h3 className='text-sm md:text-lg font-bold'>{question}</h3>
         </div>
 
         <button>
@@ -56,7 +76,10 @@ const AccordionItem = ({
 
       <div className={`pb-4 ${isOpen ? 'block bg-gray-100' : 'hidden'}`}>
         <div className='border-t border-b border-gray-300 bg-white p-8'>
-          <p className='text-lg' dangerouslySetInnerHTML={{ __html: answer }} />
+          <p
+            className='text-sm md:text-lg'
+            dangerouslySetInnerHTML={{ __html: answer }}
+          />
         </div>
       </div>
     </li>
