@@ -5,8 +5,8 @@ interface AccordionItem {
   id: number;
   question: string;
   answer: string;
-  categoryName: string;
-  subCategoryName: string;
+  categoryName?: string;
+  subCategoryName?: string;
 }
 
 interface AccordionItemProps extends AccordionItem {
